@@ -31,19 +31,21 @@ public class MainPage {
         PageFactory.initElements(DriverManager.getWebDriver(),this);
     }
 
-    public void acceptCookies(){
-        WaitForElement.waitUntilElementIsClickable(cookiesInfo);
+    public MainPage acceptCookies(){
+
         cookiesInfo.click();
         logger.info("Accepted cookies.");
+        return this;
     }
 
     /**
      * @clickLogin() method allows to click log in button on the main page, which is redirecting to login form.
      */
-    public  void clickLogin() {
-
+    public LoginPage clickOnLogIn() {
+        WaitForElement.waitUntilElementIsVisible(clickLogin);
         clickLogin.click();
         logger.info("Clicked on log in link.");
+        return new LoginPage();
 
     }
 

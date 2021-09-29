@@ -32,10 +32,11 @@ public class LoginPage {
      * @fillEmailInput() method allows to fill in field with user's email.
      * @param email
      */
-    public void fillEmailInput(String email) {
+    public LoginPage fillEmailInput(String email) {
         WaitForElement.waitUntilElementIsVisible(emailInput);
         emailInput.sendKeys(email);
-        logger.info("Field with email filled in");
+        logger.info("Filled in with user's email: {}", email);
+        return this;
 
     }
 
@@ -43,17 +44,19 @@ public class LoginPage {
      * @fillPasswordInput() method allows to fill in field with user's password account.
      * @param password
      */
-    public void fillPasswordInput(String password) {
+    public LoginPage fillPasswordInput(String password) {
 
         passwordInput.sendKeys(password);
-        logger.info("Field with password filled in");
+        logger.info("Filled in with password: {} ", password);
+        return this;
 
     }
 
-    public void clickLoginButton() {
+    public MainPage clickLoginButton() {
 
         loginButton.click();
         logger.info("Clicked log in button");
+        return new MainPage();
 
     }
 
