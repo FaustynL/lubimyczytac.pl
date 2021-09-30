@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 import page_objects.LoginPage;
 import page_objects.MainPage;
@@ -9,6 +10,8 @@ import static org.testng.AssertJUnit.assertEquals;
 public class LogInWithCorrectData extends TestBase {
 
     @Test
+    @Description("The goal of test is to log in using proper credentials and check if user's nick is displayed in " +
+            "top menu")
     public void logInWithCorrectData() {
 
 

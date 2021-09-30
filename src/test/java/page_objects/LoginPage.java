@@ -1,6 +1,7 @@
 package page_objects;
 
 import driver.manager.DriverManager;
+import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
@@ -32,6 +33,7 @@ public class LoginPage {
      * @fillEmailInput() method allows to fill in field with user's email.
      * @param email
      */
+    @Step("Filling in user email field: {email}")
     public LoginPage fillEmailInput(String email) {
         WaitForElement.waitUntilElementIsVisible(emailInput);
         emailInput.sendKeys(email);
@@ -44,6 +46,7 @@ public class LoginPage {
      * @fillPasswordInput() method allows to fill in field with user's password account.
      * @param password
      */
+    @Step("Filling in user password field: {password}")
     public LoginPage fillPasswordInput(String password) {
         WaitForElement.waitUntilElementIsVisible(passwordInput);
         passwordInput.sendKeys(password);
@@ -51,7 +54,7 @@ public class LoginPage {
         return this;
 
     }
-
+    @Step("Submiting log in button")
     public MainPage clickLoginButton() {
 
         loginButton.click();

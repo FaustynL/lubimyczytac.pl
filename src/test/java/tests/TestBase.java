@@ -4,6 +4,7 @@ import configuration.ConfigurationProperties;
 import configuration.PropertiesLoader;
 import driver.manager.DriverManager;
 import driver.manager.DriverUtils;
+import io.qameta.allure.Step;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -15,20 +16,25 @@ public class TestBase {
 
 
     @BeforeClass
+    @Step("Loading configuration from configuration.properties")
     public void beforeClass(){
         PropertiesLoader propertiesLoader = new PropertiesLoader();
         Properties propertiesFromFile = propertiesLoader.getPropertiesFromFile("configuration.properties");
         ConfigurationProperties.setProperties(propertiesFromFile);
     }
 
+
     @BeforeMethod
+    @Step("Setting up browser: {browserType} and open Home Page")
     public void beforeTest(){
         DriverManager.getWebDriver();
         DriverUtils.setInitialConfiguration();
         DriverUtils.navigateToPage(TestData.URL);
     }
 
+
     @AfterMethod
+    @Step("Closing browser")
     public void afterTest() {
         DriverManager.disposeDriver();
     }

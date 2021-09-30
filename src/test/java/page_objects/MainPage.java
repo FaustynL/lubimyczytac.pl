@@ -1,6 +1,7 @@
 package page_objects;
 
 import driver.manager.DriverManager;
+import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
@@ -31,6 +32,7 @@ public class MainPage {
         PageFactory.initElements(DriverManager.getWebDriver(),this);
     }
 
+    @Step("Accepting cookies")
     public MainPage acceptCookies(){
 
         cookiesInfo.click();
@@ -41,6 +43,7 @@ public class MainPage {
     /**
      * @clickLogin() method allows to click log in button on the main page, which is redirecting to login form.
      */
+    @Step("Click log in button and redirecting to log in form")
     public LoginPage clickOnLogIn() {
 
         clickLogin.click();
@@ -49,6 +52,7 @@ public class MainPage {
 
     }
 
+    @Step("Getting user nick to check if user was logging properly")
     public String getUserNick() {
         WaitForElement.waitUntilElementIsVisible(user);
         String userNick = user.getText();
