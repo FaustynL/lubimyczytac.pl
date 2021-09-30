@@ -19,7 +19,7 @@ public class MainPage {
     @FindBy(xpath = "//*[@id='onetrust-accept-btn-handler']")
     private WebElement cookiesInfo;
 
-    @FindBy(xpath = "//header//div/a[contains(text(),'Zaloguj się')]")
+    @FindBy(xpath = "//header//a[2]")
     private WebElement clickLogin;
 
     @FindBy(xpath = "//span[@class='d-none d-lg-inline']" )
@@ -42,7 +42,7 @@ public class MainPage {
      * @clickLogin() method allows to click log in button on the main page, which is redirecting to login form.
      */
     public LoginPage clickOnLogIn() {
-        WaitForElement.waitUntilElementIsVisible(clickLogin);
+
         clickLogin.click();
         logger.info("Clicked on log in link.");
         return new LoginPage();

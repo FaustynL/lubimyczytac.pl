@@ -1,6 +1,5 @@
 package drivers;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -11,13 +10,13 @@ public class BrowserFactory {
     public static WebDriver getBrowser(BrowserType browserType){
         switch (browserType){
             case CHROME:
-                WebDriverManager.chromedriver().setup();
+                System.setProperty("webdriver.chrome.driver", "C:/drivers/chromedriver.exe");
                 return new ChromeDriver();
             case FIREFOX:
-                WebDriverManager.firefoxdriver().setup();
+                System.setProperty("webdriver.gecko.driver", "C:/drivers/geckodriver.exe");
                 return new FirefoxDriver();
             case MSE:
-                WebDriverManager.edgedriver().setup();
+                System.setProperty("webdriver.edge.driver", "C:/drivers/msedgedriver.exe");
                 return new EdgeDriver();
             default:
                 throw new IllegalStateException("Unknown browser type!");

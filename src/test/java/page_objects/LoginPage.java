@@ -18,7 +18,7 @@ public class LoginPage {
     @FindBy(xpath = "//*[@id='Password']")
     private WebElement passwordInput;
 
-    @FindBy(xpath = "//button[contains(text(),'Zaloguj się')]")
+    @FindBy(xpath = "//button[@class=\"btn btn-primary\"]")
     private WebElement loginButton;
 
 
@@ -45,7 +45,7 @@ public class LoginPage {
      * @param password
      */
     public LoginPage fillPasswordInput(String password) {
-
+        WaitForElement.waitUntilElementIsVisible(passwordInput);
         passwordInput.sendKeys(password);
         logger.info("Filled in with password: {} ", password);
         return this;
