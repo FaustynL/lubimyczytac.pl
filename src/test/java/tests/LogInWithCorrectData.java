@@ -1,14 +1,16 @@
 package tests;
 
 import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.Test;
 import page_objects.LoginPage;
 import page_objects.MainPage;
 
-import static org.testng.AssertJUnit.assertEquals;
-
 public class LogInWithCorrectData extends TestBase {
 
+
+    @Severity(SeverityLevel.CRITICAL)
     @Test
     @Description("The goal of test is to log in using proper credentials and check if user's nick is displayed in " +
             "top menu")
@@ -27,8 +29,8 @@ public class LogInWithCorrectData extends TestBase {
                 .clickLoginButton();
 
         MainPage newMainPage = new MainPage();
-        String userNick = newMainPage.getUserNick();
-        assertEquals("Check if user was logging properly", "FaauussT", userNick);
+        newMainPage
+                .assertTextInUserNick();
 
     }
 }

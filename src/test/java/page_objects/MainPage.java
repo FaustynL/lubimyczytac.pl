@@ -1,6 +1,7 @@
 package page_objects;
 
 import driver.manager.DriverManager;
+import generic.assertions.AssertWebElement;
 import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,15 +16,15 @@ import waits.WaitForElement;
  */
 public class MainPage {
 
-    private Logger logger = LogManager.getRootLogger();
+    private Logger logger = LogManager.getLogger(MainPage.class);
 
     @FindBy(xpath = "//*[@id='onetrust-accept-btn-handler']")
     private WebElement cookiesInfo;
 
-    @FindBy(xpath = "//header//a[2]")
+    @FindBy(xpath = "//ul[@class='nav page-header-user-nav']//a[@class='nav-link'][contains(text(),'Zaloguj się')]")
     private WebElement clickLogin;
 
-    @FindBy(xpath = "//span[@class='d-none d-lg-inline']" )
+    @FindBy(xpath = "//a[@class='dropdown-toggle-text']" )
     private WebElement user;
 
 
@@ -53,10 +54,11 @@ public class MainPage {
     }
 
     @Step("Getting user nick to check if user was logging properly")
-    public String getUserNick() {
+    public MainPage assertTextInUserNick() {
+        logger.info("Checking if user logs {} properly.");
         WaitForElement.waitUntilElementIsVisible(user);
         String userNick = user.getText();
-        logger.info("Got user's nick");
-        return userNick;
+        AssertWebElement.assertThat(user).hasUserText(userNick);
+        return this;
     }
 }

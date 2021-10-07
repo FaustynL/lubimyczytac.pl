@@ -11,7 +11,7 @@ import waits.WaitForElement;
 
 public class LoginPage {
 
-    Logger logger = LogManager.getRootLogger();
+    Logger logger = LogManager.getLogger(LoginPage.class);
 
     @FindBy(xpath = "//input[@id='Email']")
     private WebElement emailInput;
