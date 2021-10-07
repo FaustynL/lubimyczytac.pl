@@ -54,10 +54,9 @@ public class MainPage {
     }
 
     @Step("Getting user nick to check if user was logging properly")
-    public MainPage assertTextInUserNick() {
-        logger.info("Checking if user logs {} properly.");
+    public MainPage assertTextInUserNick(String userNick) {
+        logger.info("Checking if user logs properly.");
         WaitForElement.waitUntilElementIsVisible(user);
-        String userNick = user.getText();
         AssertWebElement.assertThat(user).hasUserText(userNick);
         return this;
     }

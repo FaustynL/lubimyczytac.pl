@@ -30,7 +30,7 @@ public class LogInWithCorrectData extends TestBase {
 
         MainPage newMainPage = new MainPage();
         newMainPage
-                .assertTextInUserNick();
+                .assertTextInUserNick("Nuubek");
 
     }
 }

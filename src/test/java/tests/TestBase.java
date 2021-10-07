@@ -8,6 +8,7 @@ import io.qameta.allure.Step;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import utils.ScreenShotMaker;
 
 import java.util.Properties;
 
@@ -33,6 +34,7 @@ public class TestBase {
     @Step("Closing browser")
     @AfterMethod
     public void afterTest() {
+        ScreenShotMaker.makeScreenShot();
         DriverManager.disposeDriver();
     }
 }
